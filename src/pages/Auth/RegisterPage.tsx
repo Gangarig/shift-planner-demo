@@ -30,7 +30,7 @@ function RegisterPage() {
       password,
       options: {
         data: { full_name: fullName.trim() },
-        emailRedirectTo: `${window.location.origin}/login`,
+        emailRedirectTo: `${window.location.origin}${import.meta.env.BASE_URL}login`,
       },
     })
     if (signUpError) setError(signUpError.message)
