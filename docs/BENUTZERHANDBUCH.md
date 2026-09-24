@@ -1,10 +1,10 @@
-# Prägler Schichtplaner — einfache Bedienungsanleitung
+# ShiftPlanner Demo — einfache Bedienungsanleitung
 
 Geprüft am 17. September 2026
 
 ## Was die Anwendung kann
 
-Der Prägler Schichtplaner verwaltet den Arbeitsplan eines Unternehmens von Montag bis Freitag. Die Anwendung ersetzt den Papierplan durch einen gemeinsamen Wochenplan und behält dabei die vertraute Aufteilung nach Arbeitsplatz und Wochentag bei.
+Die ShiftPlanner Demo verwaltet einen fiktiven Arbeitsplan von Montag bis Freitag. Die Anwendung ersetzt den Papierplan durch einen gemeinsamen Wochenplan und behält dabei die vertraute Aufteilung nach Arbeitsplatz und Wochentag bei.
 
 Planungsverantwortliche können mehrere Beschäftigte einem Arbeitsplatz zuordnen, Einsätze verschieben, Arbeitszeiten und Notizen eintragen, Stammarbeitsplätze automatisch befüllen, Betriebsurlaub festlegen, einen fertigen Wochenplan veröffentlichen, teilen und im A4-Querformat drucken. Beschäftigte sehen den gesamten veröffentlichten Plan, können ihn aber nicht verändern.
 

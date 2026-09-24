@@ -1,10 +1,10 @@
-# Prägler Shift Planner — simple user guide
+# ShiftPlanner Demo — user guide
 
 Reviewed: 17 September 2026
 
 ## What the app does
 
-Prägler Shift Planner keeps one company’s Monday-to-Friday work plan in one place. It replaces the paper grid with a shared weekly schedule while keeping the familiar station-by-day layout.
+ShiftPlanner Demo keeps a fictional Monday-to-Friday work plan in one place. It replaces the paper grid with a shared weekly schedule while keeping the familiar station-by-day layout.
 
 Planners can assign several workers to one station, move assignments, record shift times and notes, fill workers into their usual stations, close the company for holidays, publish a finished week, share it, and print it on A4 landscape paper. Workers see the complete published plan but cannot change it.
 
