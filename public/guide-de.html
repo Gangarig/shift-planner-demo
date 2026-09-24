@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>Prägler Schichtplaner · Bedienungsanleitung</title>
+    <style>
+      :root {
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+        color: #24332b;
+        background: #dedbd2;
+        line-height: 1.55;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 32px 18px;
+      }
+      .page {
+        max-width: 940px;
+        margin: auto;
+        background: #f8f5ed;
+        border: 1px solid #c8c4b8;
+        border-radius: 18px;
+        box-shadow: 0 14px 42px rgba(30, 45, 36, 0.12);
+        overflow: hidden;
+      }
+      .hero {
+        padding: 34px 38px;
+        background: #edf0e8;
+        border-bottom: 1px solid #d4d7ce;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .brand img {
+        width: 132px;
+        height: auto;
+      }
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #52705f;
+      }
+      h1 {
+        font-size: clamp(28px, 5vw, 44px);
+        line-height: 1.08;
+        margin: 8px 0 10px;
+        color: #1f3027;
+      }
+      .lead {
+        max-width: 720px;
+        font-size: 17px;
+        color: #506158;
+        margin: 0;
+      }
+      .languages {
+        display: flex;
+        gap: 8px;
+        margin-top: 22px;
+      }
+      .languages a {
+        padding: 6px 11px;
+        border: 1px solid #b9c4ba;
+        border-radius: 999px;
+        color: #305840;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .languages a[aria-current='page'] {
+        background: #305840;
+        color: #fff;
+        border-color: #305840;
+      }
+      .content {
+        padding: 32px 38px 44px;
+      }
+      h2 {
+        font-size: 22px;
+        margin: 32px 0 10px;
+        color: #264635;
+      }
+      h2:first-child {
+        margin-top: 0;
+      }
+      p {
+        margin: 8px 0;
+        color: #3e4f46;
+      }
+      ul {
+        padding-left: 22px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      .roles {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+      }
+      .roles th,
+      .roles td {
+        text-align: left;
+        vertical-align: top;
+        padding: 11px;
+        border-bottom: 1px solid #d7d5cc;
+      }
+      .roles th {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #567060;
+        background: #eef0e9;
+      }
+      .roles td:first-child {
+        font-weight: 750;
+        color: #294b39;
+        white-space: nowrap;
+      }
+      .callout {
+        margin: 22px 0;
+        padding: 16px 18px;
+        border-left: 4px solid #52785f;
+        background: #e8eee7;
+        border-radius: 6px;
+      }
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        margin: 18px 0;
+      }
+      .step {
+        padding: 12px;
+        background: #fffdf7;
+        border: 1px solid #d8d5ca;
+        border-radius: 9px;
+        font-size: 13px;
+      }
+      .step b {
+        display: block;
+        color: #305840;
+        margin-bottom: 3px;
+      }
+      .footer {
+        padding: 16px 38px;
+        border-top: 1px solid #d4d0c6;
+        color: #67736c;
+        font-size: 12px;
+      }
+      @media (max-width: 720px) {
+        body {
+          padding: 0;
+        }
+        .page {
+          border: 0;
+          border-radius: 0;
+        }
+        .hero,
+        .content,
+        .footer {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .brand {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .brand img {
+          width: 108px;
+        }
+        .flow {
+          grid-template-columns: 1fr;
+        }
+        .roles {
+          display: block;
+          overflow-x: auto;
+        }
+        .roles td {
+          min-width: 150px;
+        }
+      }
+      @media print {
+        body {
+          padding: 0;
+          background: #fff;
+        }
+        .page {
+          max-width: none;
+          border: 0;
+          box-shadow: none;
+          background: #fff;
+        }
+        .hero,
+        .callout,
+        .step,
+        .roles th {
+          background: #fff;
+        }
+        .content {
+          padding-top: 18px;
+        }
+        h2 {
+          break-after: avoid;
+        }
+        .roles,
+        .callout {
+          break-inside: avoid;
+        }
+        .languages,
+        .footer {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <div class="brand">
+          <img src="./praegler-logo-green.png" alt="Prägler Logo" />
+          <div>
+            <div class="eyebrow">Schichtplaner · Bedienungsanleitung</div>
+            <h1>Der Wochenplan, klar für alle</h1>
+            <p class="lead">
+              Ein gemeinsamer Arbeitsbereich für die Einteilung,
+              Veröffentlichung des vollständigen Wochenplans, Abwesenheiten und
+              private Lohnzettel.
+            </p>
+          </div>
+        </div>
+        <nav class="languages" aria-label="Sprache der Anleitung">
+          <a href="./guide-de.html" aria-current="page">Deutsch</a>
+          <a href="./guide.html" lang="en">English</a>
+        </nav>
+      </header>
+      <article class="content">
+        <h2>Was die Anwendung kann</h2>
+        <p>
+          Die Anwendung überträgt den vertrauten Papierplan in einen gemeinsamen
+          digitalen Wochenplan von Montag bis Freitag. Verantwortliche teilen
+          mehrere Personen an einem Arbeitsplatz ein, verschieben Einsätze,
+          ergänzen Zeiten und Notizen, nutzen Stammarbeitsplätze und
+          veröffentlichen den Plan.
+        </p>
+        <div class="flow">
+          <div class="step">
+            <b>1 · Einladen</b>Der Eigentümer sendet die Einladung.
+          </div>
+          <div class="step">
+            <b>2 · Vorbereiten</b>Beschäftigte, Arbeitsplätze und Stammplätze
+            anlegen.
+          </div>
+          <div class="step">
+            <b>3 · Planen</b>Personen anklicken oder in das Raster ziehen.
+          </div>
+          <div class="step">
+            <b>4 · Prüfen</b>Abwesenheiten, Schließtage, Zeiten und Notizen
+            kontrollieren.
+          </div>
+          <div class="step">
+            <b>5 · Veröffentlichen</b>Das gesamte Team sieht den fertigen Plan.
+          </div>
+        </div>
+        <h2>Wer darf was?</h2>
+        <table class="roles">
+          <thead>
+            <tr>
+              <th>Rolle</th>
+              <th>Berechtigungen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mitarbeiter</td>
+              <td>
+                Sieht den vollständigen veröffentlichten Plan, eigene Einsätze,
+                Anträge, Nachweise und Lohnzettel. Der Plan ist
+                schreibgeschützt.
+              </td>
+            </tr>
+            <tr>
+              <td>Manager</td>
+              <td>
+                Verwaltet Pläne, Beschäftigte, Arbeitsplätze, Notizen und
+                Stammarbeitsplätze. Veröffentlicht, teilt und druckt
+                Wochenpläne.
+              </td>
+            </tr>
+            <tr>
+              <td>Administrator</td>
+              <td>
+                Hat Manager-Rechte sowie Einstellungen, Betriebsurlaub, Exporte
+                und eine schreibgeschützte Personalverrechnungsübersicht.
+              </td>
+            </tr>
+            <tr>
+              <td>Buchhaltung</td>
+              <td>
+                Prüft Nachweise und Anträge, erfasst Überstunden und lädt
+                private Lohnzettel hoch.
+              </td>
+            </tr>
+            <tr>
+              <td>Eigentümer</td>
+              <td>
+                Verwaltet Planung, Einladungen, Zugriffe, Einstellungen und
+                Änderungshistorie. Anträge werden von der Buchhaltung
+                freigegeben.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>Die Woche planen</h2>
+        <ul>
+          <li>
+            Eine Person auswählen und auf eine Zelle klicken oder die Person in
+            die Zelle ziehen.
+          </li>
+          <li>
+            Mehrere Personen dürfen am selben Arbeitsplatz arbeiten. Eine Person
+            darf pro Tag nur einen Arbeitsplatz haben.
+          </li>
+          <li>
+            <strong>Stammarbeitsplätze befüllen</strong> ergänzt leere Tage und
+            erhält jede manuelle Änderung.
+          </li>
+          <li>
+            Ein Einsatz kann angeklickt werden, um Person, Zeit oder
+            Übergabenotiz zu bearbeiten. Tagesnotizen gelten für den ganzen Tag.
+          </li>
+          <li>
+            <strong>Woche veröffentlichen</strong> macht den vollständigen Plan
+            sichtbar und sendet eine Benachrichtigung. Eine erneute
+            Veröffentlichung erstellt eine neue Version.
+          </li>
+        </ul>
+        <div class="callout">
+          <strong>Urlaub und Krankenstand gelten für konkrete Tage.</strong>
+          Nach der Genehmigung werden diese Tage im Planer gesperrt und
+          zusätzlich von der Datenbank geschützt. Alle anderen Tage bleiben
+          planbar.
+        </div>
+        <h2>Stammarbeitsplatz und Ausnahmen</h2>
+        <p>
+          Der Stammarbeitsplatz ist der übliche Einsatzort. Wenn Mathi
+          normalerweise im BÜRO arbeitet, aber am Mittwoch manuell an einem
+          anderen Arbeitsplatz eingeteilt wird, bleibt diese manuelle
+          Mittwochseinteilung bestehen.
+        </p>
+        <h2>Anträge und Personalverrechnung</h2>
+        <p>
+          Beschäftigte beantragen Urlaub, Krankenstand, Arzt- oder
+          Krankenhausbesuche oder eine andere Abwesenheit unter Abwesenheit
+          &amp; Lohnzettel. PDF-, JPG- und PNG-Nachweise bis 10 MB können
+          angehängt werden. Die Buchhaltung prüft die Dokumente, entscheidet
+          über den Antrag, erfasst Überstunden und lädt private monatliche
+          Lohnzettel hoch. Die Anwendung berechnet keine Gehälter.
+        </p>
+        <h2>Geschlossene Tage</h2>
+        <p>
+          Gesetzliche österreichische Feiertage erscheinen automatisch als
+          geschlossene, leere Tage. Eigentümer und Administratoren können
+          zusätzlich Betriebsurlaub anlegen. Der darunterliegende Plan bleibt
+          gespeichert. Auch eine vollständig geschlossene Woche kann
+          veröffentlicht werden.
+        </p>
+        <h2>Teilen, Drucken, Export und Historie</h2>
+        <ul>
+          <li>
+            Teilen verwendet das Smartphone-Menü und bietet einen
+            WhatsApp-kompatiblen Ersatzweg.
+          </li>
+          <li>Drucken erzeugt ein schlichtes schwarz-weißes A4-Querformat.</li>
+          <li>
+            Einstellungen exportiert den Wochenplan und die Mitarbeiterliste als
+            CSV.
+          </li>
+          <li>
+            Der Eigentümer sieht geschützte Änderungen und kann die Historie
+            eines Jahres exportieren.
+          </li>
+        </ul>
+        <h2>Benutzerkonten</h2>
+        <p>
+          Der Eigentümer lädt Personen ein, legt ihre Rolle fest und verbindet
+          das Konto bei Bedarf mit einem Mitarbeiterdatensatz. Zugriffe können
+          gesperrt oder gelöscht und dieselbe E-Mail-Adresse später erneut
+          eingeladen werden. Benutzerkonto und Mitarbeiterdatensatz sind
+          getrennt.
+        </p>
+        <h2>Vor dem normalen Produktivbetrieb</h2>
+        <p>
+          Diese Version ist für einen kontrollierten Pilotbetrieb in einem
+          einzelnen Unternehmen geeignet. Vor der Verwendung mit echten
+          Beschäftigtendaten müssen die produktive E-Mail-Zustellung, endgültige
+          Domain und Weiterleitungsadressen, ein getestetes Sicherungs- und
+          Wiederherstellungsverfahren, Datenschutzinformationen,
+          Support-Zuständigkeit sowie ein angemeldeter Test auf den verwendeten
+          Smartphones und Computern abgeschlossen werden.
+        </p>
+      </article>
+      <footer class="footer">
+        Geprüft am 17. September 2026 · Prägler Schichtplaner
+      </footer>
+    </main>
+  </body>
+</html>

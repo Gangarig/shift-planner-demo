@@ -1,0 +1,897 @@
+html {
+  background: var(--mantine-color-body);
+}
+
+body {
+  margin: 0;
+  color: var(--mantine-color-text);
+  background: var(--mantine-color-body);
+}
+
+[data-mantine-color-scheme='light'] {
+  --mantine-color-body: #c8bfb1;
+  --mantine-color-text: #2f2d29;
+  --mantine-color-dimmed: #625e57;
+  --mantine-color-default: #e8e1d6;
+  --mantine-color-default-hover: #d8cfc1;
+  --mantine-color-default-border: #b9ad9d;
+  --mantine-color-blue-light: rgba(71, 127, 167, 0.13);
+  --mantine-color-blue-light-hover: rgba(71, 127, 167, 0.19);
+  --mantine-color-blue-light-color: #295978;
+  --app-surface-soft: #cec5b7;
+  --app-surface-raised: #e8e1d6;
+  --app-border: #b9ad9d;
+  --app-assignment: #c9d7d5;
+  --app-empty: #e8e1d6;
+}
+
+[data-mantine-color-scheme='dark'] {
+  --mantine-color-body: #111827;
+  --mantine-color-text: #e5e7eb;
+  --mantine-color-dimmed: #9ca3af;
+  --mantine-color-default: #1f2937;
+  --mantine-color-default-hover: #273449;
+  --mantine-color-default-border: #374151;
+  --mantine-color-blue-light: rgba(59, 130, 246, 0.16);
+  --mantine-color-blue-light-hover: rgba(59, 130, 246, 0.22);
+  --mantine-color-blue-light-color: #93c5fd;
+  --app-surface-soft: #1f2937;
+  --app-surface-raised: #18212f;
+  --app-border: #374151;
+  --app-assignment: #172f52;
+  --app-empty: #18212f;
+}
+
+[data-mantine-color-scheme='light'] .mantine-Paper-root,
+[data-mantine-color-scheme='dark'] .mantine-Paper-root {
+  background-color: var(--app-surface-raised);
+}
+
+[data-mantine-color-scheme='light'] .mantine-Popover-dropdown,
+[data-mantine-color-scheme='light'] .mantine-Modal-content,
+[data-mantine-color-scheme='light'] .mantine-Drawer-content,
+[data-mantine-color-scheme='light'] .mantine-Input-input {
+  background-color: var(--app-surface-raised);
+  border-color: var(--app-border);
+}
+
+.page-container {
+  width: min(100%, 1280px);
+  margin-inline: auto;
+}
+
+.planner-workers {
+  position: sticky;
+  top: 86px;
+}
+
+.availability-grid {
+  display: grid;
+  grid-template-columns: minmax(96px, 1.15fr) repeat(5, minmax(0, 1fr));
+  border: 1px solid var(--app-border);
+  border-radius: var(--mantine-radius-sm);
+  overflow: hidden;
+}
+
+.availability-row {
+  display: contents;
+}
+
+.availability-header,
+.availability-cell,
+.availability-worker {
+  min-width: 0;
+  min-height: 34px;
+  padding: 5px 7px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--app-border);
+  border-bottom: 1px solid var(--app-border);
+}
+
+.availability-header {
+  justify-content: center;
+  color: var(--mantine-color-dimmed);
+  background: var(--app-surface-soft);
+  font-size: var(--mantine-font-size-xs);
+  font-weight: 700;
+}
+
+.availability-cell {
+  justify-content: center;
+}
+
+.availability-cell .mantine-Badge-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.planner-grid-cell {
+  min-width: 0;
+  min-height: 76px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  background: var(--app-empty);
+  border-right: 1px solid var(--app-border);
+  border-bottom: 1px solid var(--app-border);
+}
+
+.planner-grid-cell--assigned {
+  background: var(--app-assignment);
+}
+
+.planner-grid-cell--drop-target {
+  background: #e4f2f9;
+  box-shadow: inset 0 0 0 2px #4b93b9;
+}
+
+.planner-grid-cell[draggable='true'] {
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.planner-grid-cell[draggable='true']:hover {
+  transform: translateY(-1px);
+  box-shadow: inset 0 0 0 1px #92b9cc;
+}
+
+.planner-matrix {
+  overflow: hidden;
+  border-color: var(--app-border);
+}
+
+.planner-matrix-grid {
+  display: grid;
+  grid-template-columns: minmax(112px, 0.8fr) repeat(5, minmax(0, 1fr));
+}
+
+.planner-row {
+  display: contents;
+}
+
+.planner-corner,
+.planner-day-header,
+.planner-station-header {
+  min-width: 0;
+  min-height: 48px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  background: var(--app-surface-soft);
+  border-right: 1px solid var(--app-border);
+  border-bottom: 1px solid var(--app-border);
+}
+
+.planner-day-header {
+  justify-content: center;
+  text-align: center;
+}
+
+.planner-station-header {
+  min-height: 76px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.day-name-short {
+  display: none;
+}
+
+@media (max-width: 62em) {
+  .planner-workers {
+    position: static;
+  }
+}
+
+@media (max-width: 36em) {
+  .availability-grid {
+    grid-template-columns: 72px repeat(5, minmax(0, 1fr));
+  }
+
+  .availability-header,
+  .availability-cell,
+  .availability-worker {
+    min-height: 30px;
+    padding: 3px;
+  }
+
+  .availability-cell .mantine-Badge-root {
+    padding-inline: 3px;
+    font-size: 8px;
+  }
+
+  .planner-grid-cell {
+    min-height: 60px;
+    padding: 5px;
+  }
+
+  .planner-matrix-grid {
+    grid-template-columns: 76px repeat(5, minmax(0, 1fr));
+  }
+
+  .planner-corner,
+  .planner-day-header,
+  .planner-station-header {
+    padding: 5px;
+  }
+
+  .planner-station-header {
+    min-height: 60px;
+  }
+
+  .planner-station-header .mantine-Badge-root,
+  .planner-grid-cell .mantine-Badge-root {
+    font-size: 8px;
+    padding-inline: 4px;
+  }
+
+  .day-name-full {
+    display: none;
+  }
+
+  .day-name-short {
+    display: inline;
+  }
+}
+
+/* Desktop uses an A4-like fitted table; only narrow screens scroll horizontally. */
+.schedule-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  gap: 10px;
+  align-items: start;
+}
+.schedule-layout--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+.schedule-scroll {
+  max-height: none;
+  overflow: visible;
+  border: 1px solid var(--app-border);
+  border-radius: 10px;
+  background: var(--app-surface-raised);
+}
+.schedule-table {
+  width: 100%;
+  min-width: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+.schedule-table th,
+.schedule-table td {
+  border-bottom: 1px solid var(--app-border);
+  border-right: 1px solid var(--app-border);
+}
+.schedule-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 6px;
+  background: var(--app-surface-soft);
+  font-size: 11px;
+  line-height: 1.15;
+  text-align: left;
+}
+.schedule-table thead th:first-child {
+  z-index: 3;
+}
+.schedule-table th:first-child {
+  width: 120px;
+  position: sticky;
+  left: 0;
+  background: var(--app-surface-soft);
+}
+.schedule-table tbody th {
+  z-index: 1;
+  padding: 6px;
+  font-size: 11px;
+  line-height: 1.15;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.schedule-table th span,
+.schedule-table th small {
+  display: block;
+  color: var(--mantine-color-dimmed);
+  font-weight: 400;
+  margin-top: 2px;
+}
+.day-note-button {
+  display: block;
+  width: 100%;
+  margin-top: 3px;
+  padding: 2px 3px;
+  border: 0;
+  border-radius: 4px;
+  background: rgba(68, 120, 158, 0.09);
+  color: var(--mantine-color-text);
+  font: inherit;
+  font-size: 9px;
+  line-height: 1.15;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.schedule-table .today {
+  box-shadow: inset 0 3px var(--mantine-primary-color-filled);
+}
+.schedule-table .holiday-column {
+  background: #f2f3f5;
+  color: #59636e;
+}
+.schedule-table .holiday-column small {
+  color: #59636e;
+  font-size: 9px;
+  line-height: 1.2;
+}
+.schedule-table td {
+  padding: 2px;
+}
+.schedule-table td.holiday-cell {
+  padding: 0;
+  background: repeating-linear-gradient(
+    135deg,
+    #f5f6f7,
+    #f5f6f7 7px,
+    #eceff1 7px,
+    #eceff1 14px
+  );
+}
+.schedule-cell {
+  font: inherit;
+  width: 100%;
+  min-height: 46px;
+  padding: 2px;
+  text-align: left;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--mantine-color-text);
+  background: transparent;
+}
+.schedule-cell strong,
+.schedule-cell span {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.schedule-cell strong {
+  font-size: 11px;
+  line-height: 1.15;
+  font-weight: 600;
+}
+.schedule-cell span {
+  font-size: 9px;
+  line-height: 1.15;
+  color: var(--mantine-color-dimmed);
+  margin-top: 2px;
+}
+.schedule-cell.filled {
+  background: transparent;
+  border-color: transparent;
+}
+.cell-assignment {
+  display: block;
+  width: 100%;
+  margin: 0 0 2px;
+  padding: 3px 4px;
+  border: 1px solid var(--app-border);
+  border-radius: 4px;
+  background: var(--app-assignment);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.cell-assignment strong,
+.cell-assignment span {
+  display: inline;
+}
+.cell-assignment span {
+  margin: 0 0 0 4px;
+}
+.cell-assignment:last-child {
+  margin-bottom: 0;
+}
+.cell-assignment:hover {
+  filter: brightness(0.98);
+}
+.cell-empty-label {
+  display: grid !important;
+  min-height: 100%;
+  place-items: center;
+  margin: 0 !important;
+  font-size: 14px !important;
+  color: var(--mantine-color-dimmed);
+}
+.schedule-cell.empty {
+  text-align: center;
+  cursor: pointer;
+}
+.schedule-cell:enabled:hover {
+  border-color: #7898b5;
+  background: var(--app-surface-soft);
+}
+.schedule-cell:disabled {
+  cursor: default;
+}
+.schedule-cell:focus-visible,
+.roster-worker:focus-visible {
+  outline: 2px solid #44789e;
+  outline-offset: 1px;
+}
+.compact .schedule-cell {
+  min-height: 34px;
+  padding: 1px;
+}
+.drop-target {
+  background: var(--app-assignment);
+  box-shadow: inset 0 0 0 2px #44789e;
+}
+.schedule-roster {
+  position: sticky;
+  top: 85px;
+}
+.roster-list {
+  max-height: 64dvh;
+  overflow: auto;
+}
+.roster-worker {
+  display: flex;
+  width: 100%;
+  min-height: 40px;
+  gap: 6px;
+  align-items: center;
+  text-align: left;
+  font: inherit;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--mantine-color-text);
+  padding: 4px;
+  border-radius: 6px;
+  cursor: grab;
+}
+.roster-worker strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+}
+.roster-worker small {
+  display: block;
+  font-size: 9px;
+  color: var(--mantine-color-dimmed);
+  margin-top: 1px;
+}
+.roster-worker:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+.roster-worker.selected,
+.roster-worker:enabled:hover {
+  background: var(--app-assignment);
+  border-color: var(--app-border);
+}
+.dashboard-schedule-scroll {
+  max-height: none;
+}
+.dashboard-schedule-cell {
+  cursor: default;
+}
+.dashboard-roster {
+  overflow: hidden;
+}
+.dashboard-roster > .mantine-Stack-root {
+  height: 100%;
+}
+.dashboard-roster .roster-list {
+  min-height: 0;
+  overflow-y: auto;
+}
+.dashboard-roster-worker {
+  cursor: default;
+}
+.dashboard-roster-worker:hover {
+  background: transparent;
+  border-color: transparent;
+}
+.dashboard-roster-link {
+  cursor: pointer;
+}
+.dashboard-roster-link:hover {
+  background: var(--app-assignment);
+  border-color: var(--app-border);
+}
+.worker-options-menu {
+  max-height: min(420px, 70dvh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  -webkit-overflow-scrolling: touch;
+}
+.notification-button {
+  position: relative;
+}
+.notification-count {
+  position: absolute;
+  top: -3px;
+  right: -5px;
+  pointer-events: none;
+}
+.notification-menu {
+  max-height: min(480px, 75dvh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.notification-unread {
+  background: var(--app-assignment);
+}
+.team-access-table-wrap {
+  overflow-x: auto;
+}
+.team-access-table th {
+  padding-block: 6px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.team-access-table td {
+  padding-block: 4px;
+}
+.team-access-table .mantine-Select-root {
+  min-width: 132px;
+}
+.team-access-table .mantine-Button-root {
+  white-space: nowrap;
+}
+.roster-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: var(--app-surface-soft);
+  font-size: 9px;
+  font-weight: 700;
+}
+.dashboard-page h1,
+.planner-page h1 {
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+}
+.dashboard-summary .mantine-SimpleGrid-root {
+  gap: 8px;
+}
+.metric-card {
+  min-height: 82px;
+}
+.mantine-AppShell-header {
+  background: var(--app-surface-raised);
+}
+.brand-logo {
+  display: block;
+  object-fit: contain;
+}
+.brand-logo--header {
+  width: 142px;
+  height: 42px;
+}
+.brand-logo--login {
+  width: min(100%, 300px);
+  height: 130px;
+  margin: -28px auto -8px;
+}
+[data-mantine-color-scheme='dark'] .brand-logo {
+  filter: brightness(1.45) saturate(0.9);
+}
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.mantine-Title-root {
+  letter-spacing: -0.025em;
+}
+.print-week-title {
+  display: none;
+}
+@media (max-width: 58em) {
+  .schedule-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .schedule-roster {
+    position: static;
+  }
+  .roster-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+    max-height: 180px;
+  }
+}
+@media (min-width: 58.01em) {
+  .dashboard-schedule-layout {
+    align-items: stretch;
+  }
+  .dashboard-roster {
+    height: 100%;
+    max-height: none;
+  }
+  .dashboard-roster .roster-list {
+    flex: 1;
+    max-height: none;
+  }
+}
+@media (max-width: 48em) {
+  .app-header-inner {
+    padding-inline: 8px !important;
+    gap: 6px;
+  }
+  .app-header-brand {
+    gap: 6px;
+    min-width: 0;
+  }
+  .brand-logo--header {
+    width: 104px;
+    height: 36px;
+  }
+  .header-actions {
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .header-actions .mantine-Switch-label {
+    display: none;
+  }
+  .header-actions .mantine-Switch-body {
+    gap: 0;
+  }
+  .logout-button {
+    padding-inline: 6px;
+  }
+  .mantine-AppShell-main {
+    padding-bottom: calc(12rem + env(safe-area-inset-bottom));
+  }
+  .worker-options-menu {
+    max-height: min(360px, 44dvh);
+    padding-bottom: calc(3.5rem + env(safe-area-inset-bottom));
+    scroll-padding-bottom: calc(3.5rem + env(safe-area-inset-bottom));
+  }
+  .schedule-scroll {
+    overflow-x: auto;
+    overflow-y: visible;
+    overscroll-behavior-x: contain;
+  }
+  .schedule-table {
+    min-width: 560px;
+  }
+  .team-access-page {
+    gap: 8px;
+  }
+  .team-access-table {
+    min-width: 650px;
+  }
+  .team-access-table th {
+    padding-block: 4px;
+  }
+  .team-access-table td {
+    padding-block: 3px;
+  }
+}
+@media (max-width: 36em) {
+  .schedule-table th:first-child {
+    width: 92px;
+  }
+  .schedule-cell,
+  .compact .schedule-cell {
+    min-height: 44px;
+  }
+  .cell-assignment {
+    min-height: 0;
+    padding: 3px 4px;
+  }
+  .cell-assignment strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .cell-assignment span {
+    display: none;
+  }
+  .dashboard-roster-link {
+    min-height: 44px;
+  }
+  .schedule-roster {
+    margin-top: 8px;
+  }
+  .roster-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: 164px;
+  }
+  .roster-worker .mantine-Badge-root {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+
+@page {
+  size: A4 landscape;
+  margin: 6mm;
+}
+
+@media print {
+  html,
+  body {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    background: #fff !important;
+    color: #000 !important;
+    print-color-adjust: economy;
+    -webkit-print-color-adjust: economy;
+  }
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .mantine-AppShell-header,
+  .planner-actions,
+  .planner-week-controls,
+  .planner-station-search,
+  .schedule-roster,
+  .planner-save-status,
+  .mantine-Alert-root {
+    display: none !important;
+  }
+  .mantine-AppShell-main {
+    padding: 0 !important;
+  }
+  .page-container,
+  .planner-page {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .planner-heading {
+    display: block !important;
+    margin: 0 0 1mm !important;
+  }
+  .planner-heading .mantine-Text-root {
+    display: none;
+  }
+  .planner-heading .mantine-Title-root {
+    font-size: 13pt;
+    line-height: 1.1;
+    color: #000 !important;
+  }
+  .print-week-title {
+    display: block;
+    margin: 0 0 2mm;
+    font-size: 8pt;
+    line-height: 1.1;
+    color: #000 !important;
+  }
+  .schedule-layout {
+    display: block;
+  }
+  .schedule-scroll {
+    width: 100% !important;
+    max-height: none;
+    overflow: visible;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+  }
+  .schedule-table {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+  .schedule-table thead {
+    display: table-header-group;
+  }
+  .schedule-table tr {
+    break-inside: avoid;
+  }
+  .schedule-table th,
+  .schedule-table td {
+    position: static !important;
+    height: auto !important;
+    border: 0.25mm solid #000 !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  .schedule-table th:first-child {
+    width: 18%;
+  }
+  .schedule-table thead th {
+    padding: 0.8mm 1mm;
+    font-size: 7pt;
+    line-height: 1.05;
+  }
+  .schedule-table tbody th {
+    padding: 0.8mm 1mm;
+    font-size: 7pt;
+    line-height: 1.05;
+  }
+  .schedule-table th span {
+    margin-top: 0.2mm;
+    color: #000 !important;
+    font-size: 6pt;
+  }
+  .schedule-table th small {
+    color: #000 !important;
+    font-size: 5.5pt;
+  }
+  .schedule-table .holiday-column,
+  .schedule-table td.holiday-cell {
+    background: #fff !important;
+  }
+  .schedule-table td {
+    padding: 0.5mm 0.8mm;
+    vertical-align: top;
+  }
+  .schedule-cell,
+  .compact .schedule-cell {
+    min-height: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  .schedule-cell.filled {
+    background: #fff !important;
+  }
+  .cell-assignment {
+    min-height: 0 !important;
+    margin: 0 0 0.5mm !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    color: #000 !important;
+    background: transparent !important;
+    text-align: left;
+  }
+  .cell-assignment:last-child {
+    margin-bottom: 0 !important;
+  }
+  .schedule-cell strong {
+    font-size: 6.5pt;
+    line-height: 1.05;
+    color: #000 !important;
+  }
+  .schedule-cell span {
+    margin-top: 0.1mm;
+    font-size: 5.5pt;
+    line-height: 1.05;
+    color: #000 !important;
+  }
+  .schedule-cell.empty span {
+    display: none !important;
+  }
+  .day-note-button {
+    margin: 0.2mm 0 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    color: #000 !important;
+    background: transparent !important;
+    font-size: 5.5pt !important;
+    line-height: 1.05;
+  }
+}

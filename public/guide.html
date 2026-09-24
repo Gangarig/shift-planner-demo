@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>Prägler Shift Planner · User guide</title>
+    <style>
+      :root {
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+        color: #24332b;
+        background: #dedbd2;
+        line-height: 1.55;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 32px 18px;
+      }
+      .page {
+        max-width: 940px;
+        margin: auto;
+        background: #f8f5ed;
+        border: 1px solid #c8c4b8;
+        border-radius: 18px;
+        box-shadow: 0 14px 42px rgba(30, 45, 36, 0.12);
+        overflow: hidden;
+      }
+      .hero {
+        padding: 34px 38px;
+        background: #edf0e8;
+        border-bottom: 1px solid #d4d7ce;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .brand img {
+        width: 132px;
+        height: auto;
+      }
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #52705f;
+      }
+      h1 {
+        font-size: clamp(28px, 5vw, 44px);
+        line-height: 1.08;
+        margin: 8px 0 10px;
+        color: #1f3027;
+      }
+      .lead {
+        max-width: 720px;
+        font-size: 17px;
+        color: #506158;
+        margin: 0;
+      }
+      .content {
+        padding: 32px 38px 44px;
+      }
+      h2 {
+        font-size: 22px;
+        margin: 32px 0 10px;
+        color: #264635;
+      }
+      h2:first-child {
+        margin-top: 0;
+      }
+      h3 {
+        font-size: 17px;
+        margin: 22px 0 7px;
+      }
+      p {
+        margin: 8px 0;
+        color: #3e4f46;
+      }
+      ul,
+      ol {
+        padding-left: 22px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      .roles {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+      }
+      .roles th,
+      .roles td {
+        text-align: left;
+        vertical-align: top;
+        padding: 11px;
+        border-bottom: 1px solid #d7d5cc;
+      }
+      .roles th {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #567060;
+        background: #eef0e9;
+      }
+      .roles td:first-child {
+        font-weight: 750;
+        color: #294b39;
+        white-space: nowrap;
+      }
+      .callout {
+        margin: 22px 0;
+        padding: 16px 18px;
+        border-left: 4px solid #52785f;
+        background: #e8eee7;
+        border-radius: 6px;
+      }
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        margin: 18px 0;
+      }
+      .step {
+        padding: 12px;
+        background: #fffdf7;
+        border: 1px solid #d8d5ca;
+        border-radius: 9px;
+        font-size: 13px;
+      }
+      .step b {
+        display: block;
+        color: #305840;
+        margin-bottom: 3px;
+      }
+      .footer {
+        padding: 16px 38px;
+        border-top: 1px solid #d4d0c6;
+        color: #67736c;
+        font-size: 12px;
+      }
+      @media (max-width: 720px) {
+        body {
+          padding: 0;
+        }
+        .page {
+          border-radius: 0;
+          border: 0;
+        }
+        .hero,
+        .content,
+        .footer {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .brand {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .brand img {
+          width: 108px;
+        }
+        .flow {
+          grid-template-columns: 1fr;
+        }
+        .roles {
+          display: block;
+          overflow-x: auto;
+        }
+        .roles td {
+          min-width: 150px;
+        }
+      }
+      @media print {
+        body {
+          padding: 0;
+          background: #fff;
+        }
+        .page {
+          max-width: none;
+          border: 0;
+          box-shadow: none;
+          background: #fff;
+        }
+        .hero {
+          background: #fff;
+        }
+        .content {
+          padding-top: 18px;
+        }
+        .callout,
+        .step,
+        .roles th {
+          background: #fff;
+        }
+        h2 {
+          break-after: avoid;
+        }
+        .roles,
+        .callout {
+          break-inside: avoid;
+        }
+        .footer {
+          display: none;
+        }
+      }
+      .languages {
+        display: flex;
+        gap: 8px;
+        margin-top: 22px;
+      }
+      .languages a {
+        padding: 6px 11px;
+        border: 1px solid #b9c4ba;
+        border-radius: 999px;
+        color: #305840;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .languages a[aria-current='page'] {
+        background: #305840;
+        color: #fff;
+        border-color: #305840;
+      }
+      @media print {
+        .languages {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <div class="brand">
+          <img src="./praegler-logo-green.png" alt="Prägler logo" />
+          <div>
+            <div class="eyebrow">Shift Planner · User guide</div>
+            <h1>The weekly plan, clearly shared</h1>
+            <p class="lead">
+              One company workspace for planning stations, publishing the
+              complete week, handling leave, and delivering payroll documents
+              privately.
+            </p>
+          </div>
+        </div>
+        <nav class="languages" aria-label="Guide language">
+          <a href="./guide-de.html" lang="de">Deutsch</a
+          ><a href="./guide.html" aria-current="page">English</a>
+        </nav>
+      </header>
+      <article class="content">
+        <h2>What it does</h2>
+        <p>
+          The app turns the familiar paper station grid into a shared
+          Monday-to-Friday plan. Managers can place several workers at one
+          station, move assignments, add times and notes, use main stations,
+          publish the week, share it, and print it on A4 landscape paper.
+        </p>
+        <div class="flow">
+          <div class="step">
+            <b>1 · Invite</b>Owner sends the account invitation.
+          </div>
+          <div class="step">
+            <b>2 · Prepare</b>Create workers, stations, and main stations.
+          </div>
+          <div class="step">
+            <b>3 · Plan</b>Click or drag workers into the grid.
+          </div>
+          <div class="step">
+            <b>4 · Check</b>Review leave, closures, times, and notes.
+          </div>
+          <div class="step">
+            <b>5 · Publish</b>The team sees the complete week.
+          </div>
+        </div>
+        <h2>Who can do what</h2>
+        <table class="roles">
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Access</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Worker</td>
+              <td>
+                Complete published plan, own shifts, requests, documents, and
+                payslips. Read-only schedule.
+              </td>
+            </tr>
+            <tr>
+              <td>Manager</td>
+              <td>
+                Plans, workers, stations, notes, main stations, publishing,
+                sharing, and printing.
+              </td>
+            </tr>
+            <tr>
+              <td>Admin</td>
+              <td>
+                Manager access plus settings, company closures, exports, and
+                payroll oversight.
+              </td>
+            </tr>
+            <tr>
+              <td>Accountant</td>
+              <td>
+                Approves requests, verifies documents, records overtime, and
+                uploads private payslips.
+              </td>
+            </tr>
+            <tr>
+              <td>Owner</td>
+              <td>
+                Full planning, invitations, account access, settings, audit
+                history, and payroll oversight.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>Planning the week</h2>
+        <ul>
+          <li>Choose a worker and click a cell, or drag the worker into it.</li>
+          <li>
+            Several workers can share a station, but one worker cannot be booked
+            at two stations on the same date.
+          </li>
+          <li>
+            <strong>Fill main stations</strong> fills empty days and keeps every
+            manual change.
+          </li>
+          <li>
+            Click an assignment to edit its worker, time, or handover note. Add
+            a daily note for information that applies to everyone.
+          </li>
+          <li>
+            <strong>Publish week</strong> makes the complete plan visible to
+            workers and sends an in-app notification. Publishing again creates
+            an updated revision.
+          </li>
+        </ul>
+        <div class="callout">
+          <strong>Vacation and sick leave are date based.</strong> Once the
+          accountant approves a request, those dates are blocked in the planner
+          and protected by the database. Other dates remain assignable.
+        </div>
+        <h2>Main stations and exceptions</h2>
+        <p>
+          A main station is the worker’s normal location. If Mathi normally
+          works in BÜRO but is manually placed elsewhere on Wednesday, Wednesday
+          stays at the manually chosen station. Filling main stations later does
+          not overwrite it.
+        </p>
+        <h2>Leave and payroll documents</h2>
+        <p>
+          Workers request vacation, sick leave, appointments, or other absence
+          from Leave &amp; Payroll. They can attach PDF, JPG, or PNG evidence up
+          to 10 MB. The accountant verifies attachments before approval, records
+          overtime, and uploads private monthly payslips. Workers see only their
+          own private records. The app stores payroll documents; it does not
+          calculate salaries.
+        </p>
+        <h2>Closed days</h2>
+        <p>
+          Official Austrian public holidays appear automatically as blank closed
+          dates. Owners and admins can also add Betriebsurlaub ranges. The
+          underlying schedule remains stored and returns if a company closure is
+          removed. Even a completely closed week can be published.
+        </p>
+        <h2>Share, print, export, and audit</h2>
+        <ul>
+          <li>
+            Share uses the phone share sheet with a WhatsApp-compatible
+            fallback.
+          </li>
+          <li>Print produces a plain black-and-white A4 landscape grid.</li>
+          <li>Settings exports the selected week and worker list as CSV.</li>
+          <li>
+            The owner can inspect protected change history and export one year
+            of audit records.
+          </li>
+        </ul>
+        <h2>Account management</h2>
+        <p>
+          The owner invites each person, chooses the role, and links the login
+          to a worker record when needed. Access can be disabled or deleted, and
+          the same email can later be invited again. A login account and a
+          scheduled worker are separate records.
+        </p>
+        <h2>Before normal production use</h2>
+        <p>
+          This release is ready for a controlled one-company pilot. Complete
+          production email setup, the final domain and redirect addresses, a
+          tested backup/restore process, privacy and retention information,
+          support ownership, and a signed-in phone and desktop walkthrough
+          before storing normal employee data.
+        </p>
+      </article>
+      <footer class="footer">
+        Reviewed 17 September 2026 · Prägler Shift Planner
+      </footer>
+    </main>
+  </body>
+</html>
