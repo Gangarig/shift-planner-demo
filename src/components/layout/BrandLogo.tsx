@@ -4,11 +4,11 @@ interface BrandLogoProps {
 
 export default function BrandLogo({ placement = 'header' }: BrandLogoProps) {
   return (
-    <div
+    <img
       className={`brand-logo brand-logo--${placement}`}
       aria-label="ShiftPlanner demo"
-    >
-      ShiftPlanner <span>Demo</span>
-    </div>
+      alt="ShiftPlanner Demo"
+      src={`${import.meta.env.BASE_URL}shiftplanner-demo-logo.png`}
+    />
   )
 }

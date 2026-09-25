@@ -582,9 +582,6 @@ body {
   height: 130px;
   margin: -28px auto -8px;
 }
-[data-mantine-color-scheme='dark'] .brand-logo {
-  filter: brightness(1.45) saturate(0.9);
-}
 .visually-hidden {
   position: absolute !important;
   width: 1px;
