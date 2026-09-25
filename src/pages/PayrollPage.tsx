@@ -70,8 +70,8 @@ function checkFile(file: File | null) {
   if (!file) throw new Error('Choose a PDF, JPG, or PNG file')
   if (!accepted.includes(file.type))
     throw new Error('Only PDF, JPG, and PNG files are allowed')
-  if (file.size > 10 * 1024 * 1024)
-    throw new Error('The file must be 10 MB or smaller')
+  if (file.size > 1024 * 1024)
+    throw new Error('The public demo accepts files up to 1 MB')
   return file
 }
 
