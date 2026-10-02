@@ -689,8 +689,10 @@ body {
     min-height: 44px;
   }
   .cell-assignment {
+    box-sizing: border-box;
     min-height: 0;
     padding: 3px 4px;
+    overflow: hidden;
   }
   .cell-assignment strong {
     display: block;
