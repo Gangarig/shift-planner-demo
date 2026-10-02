@@ -693,6 +693,8 @@ body {
     padding: 3px 4px;
   }
   .cell-assignment strong {
+    display: block;
+    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
